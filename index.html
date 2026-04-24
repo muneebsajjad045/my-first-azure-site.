@@ -1,10 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Azure Lab</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps | Muneeb Sajjad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0e14;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #6366f1; /* Indigo accent */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Aurora Background */
+        .aurora {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            filter: blur(100px);
+            opacity: 0.5;
+        }
+        .blob {
+            position: absolute;
+            width: 500px; height: 500px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: move 20s infinite alternate;
+        }
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 150px);
+            gap: 15px;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .box:hover {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.06);
+            transform: scale(1.02);
+        }
+
+        /* Layout modifications */
+        .name-box { grid-column: span 2; grid-row: span 1; }
+        .uni-box { grid-column: span 1; grid-row: span 2; justify-content: space-between; }
+        .id-box { grid-column: span 1; grid-row: span 1; }
+        .task-box { grid-column: span 2; grid-row: span 1; }
+        .location-box { grid-column: span 1; grid-row: span 1; }
+
+        .label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .big-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-dot {
+            width: 8px; height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            box-shadow: 0 0 10px #10b981;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .name-box, .uni-box, .task-box { grid-column: span 1; }
+        }
+    </style>
 </head>
 <body>
-<h1>Hello, Azure!</h1>
-<p>This site was deployed using Azure Static Web Apps (Free Tier).</p>
+
+    <div class="aurora">
+        <div class="blob"></div>
+    </div>
+
+    <div class="grid-container">
+        <div class="box name-box">
+            <p class="label">Student</p>
+            <h1 class="big-text">Muneeb Sajjad</h1>
+        </div>
+
+        <div class="box uni-box">
+            <div>
+                <p class="label">Institution</p>
+                <p class="value">Air University</p>
+            </div>
+            <div style="font-size: 0.8rem; color: #666;">
+                <p>Department of CS/IT</p>
+            </div>
+        </div>
+
+        <div class="box id-box">
+            <p class="label">Roll No</p>
+            <p class="value" style="color: var(--accent);">#221045</p>
+        </div>
+
+        <div class="box task-box">
+            <p class="label">Current Task</p>
+            <p class="value"><span class="status-dot"></span> Azure Static Web Apps Deployment</p>
+        </div>
+
+        <div class="box location-box">
+            <p class="label">Node Location</p>
+            <p class="value">Rawalpindi, PK</p>
+        </div>
+    </div>
+
 </body>
 </html>
